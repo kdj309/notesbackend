@@ -19,7 +19,7 @@ routes.post('/createUser', check('password').isLength({ min: 5 }).withMessage('m
         }
     })
 }), async (req, res) => {
-    //console.log(req.body)
+    console.log(req.body)
     //res.send(" login Api is called");
 
 
