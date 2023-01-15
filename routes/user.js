@@ -38,6 +38,7 @@ routes.post('/createUser', check('password').isLength({ min: 5 }).withMessage('m
         return res.status(400).json({ errors: errors.array() });
     } else {
         const user = new User({ ...req.body, "password": hash });
+        console.log(user)
         //if there is no error a New user is created and saved into the database
         await user.save();
         return res.status(200).send(token)
@@ -62,6 +63,7 @@ routes.post('/Userlogin', body('password').exists(), check('email').isEmail().cu
     //res.send(" login Api is called");
 
     var token = jwt.sign({ id: userid }, jwtkey);
+    console.log(token)
     const errors = validationResult(req);
     try {
         if (!errors.isEmpty()) {

@@ -18,18 +18,3 @@ function Fetchuser(req, res, next) {
 module.exports = Fetchuser
 
 
-
-
-export function authenticate(data, next) {
-    if (typeof window != undefined) {
-        //console.log(document.cookie);
-        localStorage.setItem('token', data.token)
-        console.log(data);
-        localStorage.setItem("signinuser", JSON.stringify({ email: data.Email, id: data.id, Name: data.name, role: data.role, authtoken: data.token }))
-        next()
-    }
-}
-
-exports.isAdmin = () => {
-
-}
